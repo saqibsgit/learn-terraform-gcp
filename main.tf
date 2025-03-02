@@ -13,3 +13,7 @@ provider "google" {
   region  = "europe-west3"
   zone    = "europe-west3-a"
 }
+
+resource "google_compute_network" "vpc_network" {
+  name = "terraform-network"
+}
