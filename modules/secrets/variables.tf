@@ -6,7 +6,11 @@ variable "secret_name" {
   type        = string
   description = "Name of the secret"
 }
-varialbe "secret_value" {
+variable "secret_id" {
+  description = "The id of the created secret"
+  type        = string
+}
+variable "secret_value" {
   type        = string
   description = "The sesitive data that needs to be stored in the secret"
   sensitive   = true

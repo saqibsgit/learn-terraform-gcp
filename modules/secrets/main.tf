@@ -1,6 +1,7 @@
 resource "google_secret_manager_secret" "secret" {
-  name    = var.secret_name
-  project = var.project_id
+  name      = var.secret_name
+  secret_id = var.secret_id
+  project   = var.project_id
 
   replication {
     automatic = true #replicate secret accross different regions 
