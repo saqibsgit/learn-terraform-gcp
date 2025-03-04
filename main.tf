@@ -1,8 +1,9 @@
 
 # Adding backend to store the state file
 terraform {
-    backend "local"{
-        path = "./terraform.tfstate"
+    backend "gcs"{
+        bucket = "terraform-practice-452511-terraform-state"
+        prefix = "terraform/state"
     }
 }
 resource "google_storage_bucket" "remote-state-bucket"{
