@@ -56,9 +56,9 @@ module "secrets" {
   service_account_email = module.iam.service_account_email
 }
 
-module "logging"{
-  source = "./modules/logging"
-  project_id = var.project_id
-  log_sink_name = "audit-logs-sink"
+module "logging" {
+  source          = "./modules/logging"
+  project_id      = var.project_id
+  log_sink_name   = "audit-logs-sink"
   log_bucket_name = "audit-logs-bucket-${var.env}"
 }
