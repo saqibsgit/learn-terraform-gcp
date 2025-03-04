@@ -1,7 +1,11 @@
 variable "vpc_name" {
   type        = string
-  description = "Name of the VPC"
-  default     = "vpc-dev"
+  description = "The name of the VPC"
+
+  validation {
+    condition     = length(var.vpc_name) > 3
+    error_message = "VPC name must be at least 3 characters long."
+  }
 }
 
 variable "auto_create_subnetworks" {
