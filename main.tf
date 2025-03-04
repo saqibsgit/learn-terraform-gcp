@@ -16,5 +16,8 @@ resource "google_storage_bucket" "remote-state-bucket" {
 module "network" {
   source                  = "./modules/network"
   vpc_name                = "vpc-dev"
-  auto_create_subnetworks = true
+  auto_create_subnetworks = false
+  region                  = "europe-west3"
+  public_subnet_cidr      = "10.0.1.0/24"
+  private_subnet_cidr     = "10.0.2.0/24"
 }
