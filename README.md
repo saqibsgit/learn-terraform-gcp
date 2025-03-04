@@ -50,9 +50,6 @@ This project follows **Terraform security best practices**, including:
 - 🔹 **Implement CI/CD Pipelines**  
   - Automate Terraform deployment using **GitHub Actions**, **GitLab CI**, or **Google Cloud Build**.
 
-- 🔹 **Use Terraform Cloud or Remote State Locking**  
-  - Store Terraform state remotely using **Terraform Cloud** or a **dedicated GCS bucket** with state locking.
-
 - 🔹 **Enhance Security with KMS Encryption**  
   - Use **Customer-Managed Encryption Keys (CMEK)** instead of Google-managed keys for **GCS, Secret Manager, and Logging**.
 
