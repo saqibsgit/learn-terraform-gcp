@@ -50,6 +50,7 @@ module "secrets" {
   source                = "./modules/secrets"
   project_id            = var.project_id
   secret_name           = "my-app-${var.env}-secret"
+  secret_id             = data.google_secret_manager_secret_version.secret.secret
   secret_value          = data.google_secret_manager_secret_version.secret.secret_data
   env                   = var.env
   service_account_email = module.iam.service_account_email
