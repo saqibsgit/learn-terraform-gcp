@@ -40,3 +40,17 @@ module "iam" {
   project_id         = "terraform-practice-452511"
   service_account_id = "app-service-account"
 }
+
+# using secrets modules which stores and retrieves secrets securely
+data "google_secret_manager_secret_version" "secret" {
+  secret = "my-app-${var.env}-secret"
+}
+
+module "secrets" {
+  source                = "./modules/secrets"
+  project_id            = var.project_id
+  secret_name           = "my-app-${var.env}-secret"
+  secret_value          = data.google_secret_manager_secret_version.secret.secret_data
+  env                   = var.env
+  service_account_email = module.iam.service_account_email
+}
