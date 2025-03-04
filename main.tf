@@ -11,3 +11,10 @@ resource "google_storage_bucket" "remote-state-bucket" {
   location                    = "EU"
   uniform_bucket_level_access = true
 }
+
+# Using the network module to create dev vpc network
+module "network" {
+  source                  = "./modules/network"
+  vpc_name                = "vpc-dev"
+  auto_create_subnetworks = true
+}
