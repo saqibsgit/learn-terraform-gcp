@@ -16,3 +16,20 @@ resource "google_compute_subnetwork" "private_subnet" {
   region        = var.region
   network       = google_compute_network.vpc_network.id
 }
+
+# Default firewall rule for basic traffic
+resource "google_compute_firewall" "default" {
+  name    = "${var.vpc_name}-default-firewall"
+  network = google_compute_network.vpc_network.self_link
+
+  allow {
+    protocol = "icmp"
+  }
+
+  allow {
+    protocol = "tcp"
+    ports    = ["80", "8080", "1000-2000"]
+  }
+
+  source_ranges = [var.vpc_cidr]
+}
