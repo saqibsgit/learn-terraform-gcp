@@ -33,3 +33,10 @@ module "storage" {
   uniform_bucket_level_access = true
   kms_key_name                = "" #leaving empty to use google managed keys
 }
+
+# add least priviledge roles using iam module
+module "iam" {
+  source             = "./modules/iam"
+  project_id         = "terraform-practice-452511"
+  service_account_id = "app-service-account"
+}
