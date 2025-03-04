@@ -1,6 +1,11 @@
 variable "bucket_name" {
   type        = string
-  description = "The name of the cloud storage bucket"
+  description = "GCS bucket name for storing data"
+
+  validation {
+    condition     = length(var.bucket_name) >= 5 && length(var.bucket_name) <= 63
+    error_message = "Bucket name must be between 5 and 63 characters."
+  }
 }
 
 variable "location" {
