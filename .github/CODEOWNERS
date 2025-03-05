@@ -1,0 +1,17 @@
+# Each line follows the pattern:
+# <file pattern>  <owner(s)>
+
+# Owners for root-level files
+*          @saqibsgit
+
+# Owners for Terraform modules
+modules/*  @DevOpsEngineer @saqibsgit
+
+# Owners for main configuration files
+main.tf    @TeamLeadSecurityEngineering @saqibsgit
+
+# Owners for secrets module
+modules/secrets/*  @StaffSystemEngineer @saqibsgit
+
+# Owners for logging module
+modules/logging/*  @TeamLeadSoftwareEngineering @saqibsgit
