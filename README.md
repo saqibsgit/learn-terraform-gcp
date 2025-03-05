@@ -45,6 +45,28 @@ This project follows **Terraform security best practices**, including:
 - ✅ **Encrypted Storage**: Uses **Google-managed encryption** for GCS.
 - ✅ **Audit Logging Enabled**: Logs access to secrets, storage, and IAM.
 
+## ⚙️ Usage
+
+To run this Terraform configuration, you will need to supply environment-specific variables via `.tfvars` files. For example, a `dev.tfvars` might contain values for your development environment, while a `prod.tfvars` has production-specific settings.
+
+### Create Environment-Specific Variables Files
+
+In the root of this project, create a `.tfvars` file for each environment you want to deploy. For example:
+<code>dev.tfvars</code>
+
+Following Variables are required:
+# tfvars file Description
+
+| Variable     | Description |
+|-------------|------------|
+| `project_id`   | The project id of GCP project. |
+| `env`   | The deployment environment, acceptable values: dev or prod. |
+| `region`       | choose the region in which to deploy infrastructure. |
+| `public_subnet_cidr`   | CIDR range for public subnet within your VPC. |
+| `private_subnet_cidr`   | CIDR range for private subnet within your VPC. |
+
+
+
 ## 📜 Future Improvements
 
 - 🔹 **Implement CI/CD Pipelines**  
