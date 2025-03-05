@@ -1,5 +1,5 @@
 
-# Adding backend to store the state file
+# Adding backend to store the state file remotely in a google cloud storage bucket
 terraform {
   backend "gcs" {
     bucket = "terraform-practice-452511-terraform-state"
@@ -19,16 +19,16 @@ module "network" {
   source                  = "./modules/network"
   vpc_name                = "vpc-dev"
   auto_create_subnetworks = false
-  region                  = "europe-west3"
-  public_subnet_cidr      = "10.0.1.0/24"
-  private_subnet_cidr     = "10.0.2.0/24"
+  region                  = var.region
+  public_subnet_cidr      = var.public_subnet_cidr
+  private_subnet_cidr     = var.private_subnet_cidr
 }
 
 # Create a secure storage bucket using storage module
 module "storage" {
   source                      = "./modules/storage"
   bucket_name                 = "terraform-practice-452511-secure-storage"
-  location                    = "europe-west3"
+  location                    = var.region
   versioning_enabled          = true
   uniform_bucket_level_access = true
   kms_key_name                = "" #leaving empty to use google managed keys
@@ -37,7 +37,7 @@ module "storage" {
 # add least priviledge roles using iam module
 module "iam" {
   source             = "./modules/iam"
-  project_id         = "terraform-practice-452511"
+  project_id         = var.project_id
   service_account_id = "app-service-account"
 }
 
